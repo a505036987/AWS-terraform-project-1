@@ -1,0 +1,24 @@
+# Creating NAT subnet 
+resource "aws_subnet" "natsub-1" {
+  depends_on = [
+    aws_vpc.asiait-vpc
+  ]
+  vpc_id            = aws_vpc.asiait-vpc.id
+  cidr_block        = var.asiait-nat-a
+  availability_zone = "ap-northeast-1a"
+  tags = {
+    Name = "NAT Subnet"
+  }
+}
+
+resource "aws_subnet" "natsub-2" {
+  depends_on = [
+    aws_vpc.asiait-vpc
+  ]
+  vpc_id            = aws_vpc.asiait-vpc.id
+  cidr_block        = var.asiait-nat-c
+  availability_zone = "ap-northeast-1c"
+  tags = {
+    Name = "NAT Subnet"
+  }
+}
